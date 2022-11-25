@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Platforms
 {
     public partial class GameUI : Form
     {
+        private Game game;
         public GameUI()
         {
             InitializeComponent();
-            this.DoubleBuffered = true; //redraws into second buffer, prevents filcker
+
+            DoubleBuffered = true;     //redraws into second buffer, prevents filckering
+
+            game = new Game(this)
+            {
+                _backgroundColor = Color.LightGray
+            };
         }
     }
 }
