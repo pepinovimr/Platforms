@@ -1,6 +1,5 @@
 ﻿using Platforms.Engine.Objects;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
@@ -12,9 +11,6 @@ namespace Platforms.Engine
     /// </summary>
     internal class MapCreator
     {
-        public MapCreator()
-        {
-        }
 
         /// <summary>
         /// Creates game map by making game objects from file by converting colors to gameObjects
@@ -22,8 +18,8 @@ namespace Platforms.Engine
         /// <param name="colorObjectDictionary">Dictionary whit key as color and Tuple with Type of GameObject and Image to set it</param>
         /// <param name="map">Bitmap with pixels </param>
         /// <param name="scale">How big should 1 tile be</param>
-        /// <exception cref="ArgumentException"></exception>
-        public void CreateMapByColor(Dictionary<Color, Tuple<Type, Image>> colorObjectDictionary, Bitmap map, int scale)
+        /// <exception cref="ArgumentException">Type is not inherited type from GameObject</exception>
+        public static void CreateMapByColor(Dictionary<Color, Tuple<Type, Image>> colorObjectDictionary, Bitmap map, int scale)
         {
             if (IsTypeOfGameObject(colorObjectDictionary))
             {
@@ -45,7 +41,7 @@ namespace Platforms.Engine
             }
         }
 
-        private bool IsTypeOfGameObject(Dictionary<Color, Tuple<Type, Image>> colorObjectDictionary)
+        private static bool IsTypeOfGameObject(Dictionary<Color, Tuple<Type, Image>> colorObjectDictionary)
         {
             foreach (var t in colorObjectDictionary.Values)
             {

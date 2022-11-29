@@ -9,16 +9,19 @@ using System;
 
 namespace Platforms
 {
+    /// <summary>
+    /// Main game class with dependent objects and methods
+    /// </summary>
     internal class Game : PlatformsEngine
     {
         PlayerObject player;
         string resourcesDir = Directory.GetCurrentDirectory() + @"\Resources\";
         int scaleOfMap = 25;
-        MapCreator creator = new MapCreator();
         Dictionary<string, Image> PlayerDictionary = new Dictionary<string, Image>();
         Dictionary<string, Image> TileDictionary = new Dictionary<string, Image>();
         public Dictionary<Color, Tuple<Type, Image>> ColorTypeDictionary = new Dictionary<Color, Tuple<Type, Image>>();
         Bitmap level1;
+
         public Game(Form window) : base(window)
         {
         }
@@ -27,8 +30,7 @@ namespace Platforms
         public override void OnLoad()
         {
             FillDictionaries();
-
-            creator.CreateMapByColor(ColorTypeDictionary, level1, scaleOfMap);
+            MapCreator.CreateMapByColor(ColorTypeDictionary, level1, scaleOfMap);
 
             player = new PlayerObject(new Vector2(10, 10), new Vector2(100, 100), PlayerDictionary["rogue"]);
         }
