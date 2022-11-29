@@ -98,7 +98,8 @@ namespace Platforms.Engine
                 });
                 OnUpdate();
                 _stopwatch.Stop();
-                Thread.Sleep(refreshTime - _stopwatch.Elapsed);
+                if(_stopwatch.Elapsed < refreshTime)
+                    Thread.Sleep(refreshTime - _stopwatch.Elapsed);
 
 
                 if (!_window.IsHandleCreated)

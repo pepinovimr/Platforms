@@ -49,8 +49,6 @@ namespace Platforms
 
         public override void OnUpdate()
         {
-
-
             PlayerMovement();
             //CameraPosition.X--;
             //player.Speed = .5f;
