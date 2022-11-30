@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Platforms.Engine
@@ -66,7 +65,7 @@ namespace Platforms.Engine
         /// <param name="newGameObject"></param>
         public static void AddNewObject(GameObject newGameObject)
         {
-            //Dan't add player if one already exists
+            //Don't add player if one already exists
             if (newGameObject.GetType() == typeof(PlayerObject) && AllObjects.Any(x => x.GetType() == typeof(PlayerObject)))
                 return;
 
