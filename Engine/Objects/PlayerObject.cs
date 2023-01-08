@@ -13,9 +13,13 @@ namespace Platforms.Engine.Objects
         {
         }
 
+        /// <summary>
+        /// Checks wheter playerObject is in collision with Terrain Object
+        /// </summary>
+        /// <returns>True if player is coliding, false otherwise</returns>
         public bool IsColiding()
         {
-            foreach (var o in PlatformsEngine.AllObjects.Where(x => x.GetType() == typeof(TerrainObject)))  //tests only for certain objects
+            foreach (var o in PlatformsEngine.AllObjects.Where(x => x.GetType() == typeof(TerrainObject)))
             {
                 //AABB colision detection
                 if(Position.X < o.Position.X + o.Size.X &&
