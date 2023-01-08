@@ -23,8 +23,8 @@ namespace Platforms
         Bitmap level1;
 
         private Vector2 lastPos = Vector2.Zero;
-        private float playerMoveX = 1f;
-        private float playerMoveY = 1f;
+        private float playerMoveX = 2f;
+        private float playerMoveY = 2f;
         bool up;
         bool down;
         bool left;
@@ -41,6 +41,7 @@ namespace Platforms
             MapCreator.CreateMapByColor(ColorTypeDictionary, level1, scaleOfMap);
 
             player = new PlayerObject(new Vector2(10, 10), new Vector2(46, 51), PlayerDictionary["rogue"]);
+
         }
         public override void OnDraw()
         {
@@ -50,7 +51,7 @@ namespace Platforms
         public override void OnUpdate()
         {
             PlayerMovement();
-            //CameraPosition.X--;
+            _camera.Folow(player);
             //player.Speed = .5f;
             //player.Position.X += player.Speed;
 
@@ -82,6 +83,7 @@ namespace Platforms
             if (right)
             {
                 player.Position.X += playerMoveX;
+                _camera.MoveCameraToLocation(new Vector2(0, 0));
                 return;
             }
             if (up)

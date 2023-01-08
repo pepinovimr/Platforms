@@ -13,7 +13,7 @@ namespace Platforms.Engine
     {
 
         /// <summary>
-        /// Creates game map by making game objects from file by converting colors to gameObjects
+        /// Creates game map by making game objects from file by converting color pixels to gameObjects
         /// </summary>
         /// <param name="colorObjectDictionary">Dictionary whit key as color and Tuple with Type of GameObject and Image to set it</param>
         /// <param name="map">Bitmap with pixels </param>

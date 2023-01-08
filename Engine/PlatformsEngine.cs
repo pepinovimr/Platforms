@@ -17,6 +17,7 @@ namespace Platforms.Engine
     internal abstract class PlatformsEngine
     {
         protected Form _window;
+        protected Camera _camera;
         protected Thread _gameLoopThread;
         /// <summary>
         /// Background color of game
@@ -32,7 +33,7 @@ namespace Platforms.Engine
         /// <summary>
         /// Position of Camera
         /// </summary>
-        public Vector2 CameraPosition = Vector2.Zero;
+        //public Vector2 CameraPosition = Vector2.Zero;
         //Might need camera angle in future
 
         public PlatformsEngine(Form window, double targetFPS = 120)
@@ -40,6 +41,7 @@ namespace Platforms.Engine
             double time = 1 / (targetFPS /1000 );
             refreshTime = new TimeSpan(0,0,0,0,(int)time);
 
+            _camera = new Camera(window.Size);
             _window = window;
             _window.Paint += Renderer;
 
@@ -116,7 +118,7 @@ namespace Platforms.Engine
 
             g.Clear(_backgroundColor);
 
-            g.TranslateTransform(CameraPosition.X, CameraPosition.Y);
+            g.TranslateTransform(_camera.CameraPosition.X, _camera.CameraPosition.Y);
 
             foreach (GameObject o in AllObjects)
             {
